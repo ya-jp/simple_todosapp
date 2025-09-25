@@ -17,17 +17,18 @@
 
     const renderTodo = (todo) => {
         /*
-        -li
-         -label
-           -input
-           -span
-         -button
-        */
+         - li
+           - label
+             - input
+             - span
+           - button
+         */
 
         const input = document.createElement('input');
         input.type = 'checkbox';
         input.checked = todo.isCompleted;
-        //checkしたやつも保存する機能を追加
+
+        //チェックボックスの状態変更を保存する
         input.addEventListener('change', () => {
             todos.forEach((item) => {
                 if (item.id === todo.id) {
@@ -48,9 +49,8 @@
         button.textContent = 'x';
         //削除機能を追加する
         button.addEventListener('click', () => {
-            if (!confirm('Sure?')) {
-                return;
-            }
+            if (!confirm('Sure?')) return;
+
             li.remove();
             todos = todos.filter((item) => {
                 return item.id !== todo.id;
@@ -70,36 +70,33 @@
         });
     };
 
-    //フォームからtodoに投稿できるようにする
-    //デフォルトだとページ遷移をして消えてしまうのでeを渡して遷移しないようにする
+
+    //フォームからtodoを追加する
     document.querySelector('#add-form').addEventListener('submit', (e) => {
         e.preventDefault();
-        //多くなるので定数にする
+
         const input = document.querySelector('#add-form input');
         const todo = {
-            //todoに各要素にユニークなIDをつける
-            id: Date.now(),     //あまり厳密ではないが今回はこれで
+            id: Date.now(),
             title: input.value,
             isCompleted: false,
         };
+
         renderTodo(todo);
         todos.push(todo);
-        console.table(todos);
         saveTodos();
 
         //フォームの後に残ったやつを消す
         input.value = '';
-        //空になったときに自動的にフォーカスする
         input.focus();
     });
 
-    //パージ機能の追加
+    //パージ機能(完了済みを削除)
     document.querySelector('#purge').addEventListener('click', () => {
-        if (!confirm('Sure?')) {
-            return;
-        }
+        if (!confirm('Sure?')) return;
+
         todos = todos.filter((todo) => {
-         return todo.isCompleted === false;
+            return todo.isCompleted === false;
         });
         saveTodos();
 
@@ -110,6 +107,5 @@
     });
 
     renderTodos();
-
 
 }

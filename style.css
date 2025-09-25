@@ -2,11 +2,29 @@
 
 body {
     margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
 }
 
 .container {
-    width: 400px;
+    max-width: 500px;
     margin: 16px auto;
+    padding: 16px;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 h1 {
@@ -33,7 +51,7 @@ li {
 }
 
 li input:checked+span {
-    color: gray;
+    color: #999;
     text-decoration: line-through;
 }
 
@@ -54,4 +72,14 @@ form {
 form input {
     flex: 1;
     padding: 4px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
 }
