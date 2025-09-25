@@ -3,13 +3,18 @@
 ブラウザで動作するシンプルな ToDo アプリです。  
 ローカルストレージを使ってデータを保存するため、ページを更新しても内容が保持されます。
 
-## 機能
+## DEMO
+[https://ya-jp.github.io/simple_todosapp/](https://ya-jp.github.io/simple_todosapp/)
+
+## Features
 - ToDo の追加
-- 完了チェック（チェック状態も保存されます）
-- 全削除（Purge）
+- チェックで完了管理
+- 1件削除
+- 完了済みタスクをまとめて削除（Purge）
+- LocalStorage に保存
 
-## 使い方
-1. リポジトリをクローンする  
-   ```bash
-   git clone https://github.com/ya-jp/simple_todosapp.git
-
+## How to use
+1. 「Add」で ToDo を追加
+2. チェックを入れると完了状態になります
+3. `x` ボタンで削除
+4. `Purge` ボタンで完了済みタスクをまとめて削除
